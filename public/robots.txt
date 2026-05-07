@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jrrodriguez.es/sitemap-index.xml
+Sitemap: https://opspilotcontact-lgtm.github.io/jr-rodriguez-ponencias/sitemap-index.xml
