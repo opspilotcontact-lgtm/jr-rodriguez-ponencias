@@ -1,0 +1,132 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "JR Rodríguez — Ponencias sobre adicción, depresión y reconstrucción personal",
+  description = "No vengo a contaros cómo caí. Vengo a contaros cómo volví a levantarme. Testimonio real para empresas, centros formativos y eventos. Ponencias y acompañamiento personal desde la experiencia.",
+  image = "/og-image.jpg",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://jrrodriguez.es");
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "José Ramón Rodríguez",
+  alternateName: "JR Rodríguez",
+  jobTitle: "Ponente y acompañante personal",
+  description:
+    "Ponente y acompañante personal. Testimonio real sobre adicción, depresión, salud mental y reconstrucción. Ponencias para empresas, centros educativos y eventos en toda España.",
+  url: "https://jrrodriguez.es",
+  knowsAbout: [
+    "Adicciones",
+    "Depresión",
+    "Salud mental",
+    "Recuperación",
+    "Crecimiento personal",
+    "Acompañamiento",
+    "Testimonio",
+    "Reinserción",
+  ],
+  knowsLanguage: "es",
+  nationality: "ES",
+  sameAs: [],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "JR Rodríguez — Ponencias y acompañamiento personal",
+  url: "https://jrrodriguez.es",
+  inLanguage: "es-ES",
+  description,
+};
+
+const speakerSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Ponencias JR Rodríguez",
+  serviceType: ["Ponencias", "Charlas testimonio", "Acompañamiento personal"],
+  areaServed: { "@type": "Country", name: "España" },
+  provider: {
+    "@type": "Person",
+    name: "José Ramón Rodríguez",
+  },
+  description:
+    "Ponencias y acompañamiento personal sobre superación de adicciones, depresión y reconstrucción. Empresas, centros educativos y eventos.",
+};
+---
+
+<!doctype html>
+<html lang="es-ES">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="theme-color" content="#161616" />
+    <meta name="author" content="José Ramón Rodríguez" />
+    <meta name="keywords" content="ponente adicciones, charla salud mental empresas, conferenciante superación, testimonio recuperación adicción, ponente Andalucía, acompañamiento personal adicciones, ponencia depresión, hablar de salud mental en construcción" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={new URL(image, canonicalURL)} />
+    <meta property="og:site_name" content="JR Rodríguez" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, canonicalURL)} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} is:inline />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} is:inline />
+    <script type="application/ld+json" set:html={JSON.stringify(speakerSchema)} is:inline />
+  </head>
+  <body>
+    <a
+      href="#contenido"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-ember focus:text-bone focus:px-4 focus:py-2 focus:font-semibold focus:rounded-sm"
+    >
+      Saltar al contenido
+    </a>
+    <slot />
+
+    <script>
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          }
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      );
+
+      requestAnimationFrame(() => {
+        document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+      });
+    </script>
+  </body>
+</html>

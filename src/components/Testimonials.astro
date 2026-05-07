@@ -1,0 +1,65 @@
+---
+const testimonials = [
+  {
+    quote:
+      "JR no nos vino a motivar. Vino a contar. Y eso, en una sala de gente que llevaba años sin levantar el tema, abrió conversaciones que necesitábamos tener.",
+    name: "Empresa · próximamente",
+    role: "Jornada interna sobre salud mental",
+    type: "empresa",
+  },
+  {
+    quote:
+      "Nunca había escuchado a nadie hablar tan claro de lo que duele. Sin victimismo y sin postureo. Salí de la charla con la sensación de que algo se había movido dentro.",
+    name: "Asistente · próximamente",
+    role: "Centro de FP · ponencia para alumnado",
+    type: "asistente",
+  },
+  {
+    quote:
+      "Lo que nos contó José Ramón fue un regalo. No vendió nada, no se vendió a sí mismo. Solo abrió la herida y dejó que cada uno hiciera con eso lo que necesitara.",
+    name: "Asociación · próximamente",
+    role: "Encuentro de prevención de adicciones",
+    type: "asociacion",
+  },
+];
+---
+
+<section id="testimonios" class="bg-bone text-ink py-24 md:py-32 relative">
+  <div class="mx-auto max-w-[1400px] px-6 md:px-10">
+    <div class="flex items-end justify-between flex-wrap gap-6 mb-14 reveal">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="block w-8 h-px bg-ink"></span>
+          <span class="eyebrow">Lo que dicen</span>
+        </div>
+        <h2 class="font-display text-[clamp(2.4rem,5.4vw,4.6rem)] leading-[0.96] tracking-[-0.03em] max-w-3xl">
+          Quienes me han<br/>
+          <span class="text-ink/40">escuchado de cerca.</span>
+        </h2>
+      </div>
+      <p class="font-serif text-base text-ink/65 max-w-sm">
+        Estoy reuniendo los primeros testimonios reales tras las primeras ponencias.
+        Estos son ejemplos editoriales mientras llegan los definitivos.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6 lg:gap-8">
+      {testimonials.map((t) => (
+        <figure class={`reveal relative bg-bone-warm p-8 md:p-10 border-l-2 ${t.type === "empresa" ? "border-deep" : t.type === "asistente" ? "border-ember" : "border-ink"}`}>
+          <span class="absolute top-6 right-6 font-display text-5xl text-ink/10 leading-none select-none" aria-hidden="true">"</span>
+
+          <blockquote class="font-serif text-lg leading-relaxed text-ink/90 relative">
+            {t.quote}
+          </blockquote>
+
+          <figcaption class="mt-8 pt-6 border-t border-ink/15">
+            <p class="font-semibold">{t.name}</p>
+            <p class="text-sm text-ink/60 mt-1">{t.role}</p>
+          </figcaption>
+
+          <span class="absolute -bottom-px left-0 w-12 h-px bg-current opacity-30" aria-hidden="true"></span>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

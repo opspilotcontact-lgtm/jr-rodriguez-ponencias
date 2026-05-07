@@ -1,0 +1,105 @@
+---
+// AIDA · INTERÉS — Los seis pasos del testimonio. La estructura que engancha.
+const steps = [
+  {
+    n: "01",
+    t: "Quién era",
+    sub: "Antes de todo lo demás",
+    body: "Un niño con los abuelos. Una familia rota a los dos años. Mucha emoción y ningún sitio donde ponerla. Yo no era débil — sólo no tenía las herramientas que nadie me había enseñado a usar.",
+  },
+  {
+    n: "02",
+    t: "Cómo caí",
+    sub: "El alivio que no era alivio",
+    body: "Empezó con porros y con malas compañías. Después, lo demás. No fue una sola decisión: fue una escalera de pequeñas decisiones que cada una parecía pequeña, hasta que un día miras hacia arriba y no ves la salida.",
+  },
+  {
+    n: "03",
+    t: "El infierno",
+    sub: "Lo que nadie ve",
+    body: "2014. Año y medio encamado. Mezcla de sustancias y medicación psiquiátrica. La depresión entera. El miedo. El vacío. El intento de suicidio. La parte que no se cuenta en una charla bonita y que es la que de verdad importa contar.",
+  },
+  {
+    n: "04",
+    t: "El clic",
+    sub: "Empezar a empezar",
+    body: "Algo se movió. No fue épico, no fue una iluminación. Fue decidir que prefería el dolor de cambiar al dolor de seguir igual. En 2016 entré en Proyecto Hombre. Allí empezó el trabajo de verdad.",
+  },
+  {
+    n: "05",
+    t: "La reconstrucción",
+    sub: "Disciplina, fe, hábitos, valores",
+    body: "Tres años de comunidad terapéutica. Aprender a sentir sin huir. Reconstruir vínculos. Aceptar la responsabilidad. Recuperar valores que pensé que había perdido. En 2019 fui alta terapéutica. A los seis meses fundé mi empresa.",
+  },
+  {
+    n: "06",
+    t: "El propósito",
+    sub: "Por qué estoy aquí hoy",
+    body: "Hoy hablo porque la gente no conecta con la perfección — conecta con la verdad. Si mi historia ayuda a una sola persona a no sentirse sola en lo suyo, ya merece la pena. Por eso doy ponencias y por eso acompaño a quien lo necesita.",
+  },
+];
+---
+
+<section id="relato" class="relative bg-deep text-bone py-24 md:py-32 overflow-hidden">
+  <div class="absolute inset-0 ledger pointer-events-none opacity-60" aria-hidden="true"></div>
+
+  <div
+    class="absolute -top-40 -right-32 w-[640px] h-[640px] rounded-full pointer-events-none"
+    style="background: radial-gradient(circle, rgba(197,107,79,0.16) 0%, rgba(197,107,79,0) 60%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative mx-auto max-w-[1400px] px-6 md:px-10">
+    <div class="max-w-3xl reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="block w-8 h-px bg-ember"></span>
+        <span class="eyebrow text-ember">El relato · seis pasos</span>
+      </div>
+      <h2 class="font-display text-[clamp(2.4rem,5.4vw,4.6rem)] leading-[0.96] tracking-[-0.03em]">
+        La gente no conecta<br/>
+        <span class="text-bone/45">con la perfección.</span><br/>
+        Conecta con<br/>
+        <span class="italic font-serif font-normal text-ember">la verdad.</span>
+      </h2>
+      <p class="mt-8 font-serif text-lg leading-relaxed text-bone/80">
+        Esta es la columna vertebral de cada ponencia. No empiezo por lo que consumía
+        ni por lo mal que estaba. Empiezo por quién era yo antes — y termino por
+        quién decidí volver a ser. Porque lo importante no es la caída: es la transformación.
+      </p>
+    </div>
+
+    <ol class="mt-16 md:mt-20 grid md:grid-cols-2 gap-px bg-bone/10">
+      {steps.map((s) => (
+        <li class="group relative bg-deep p-8 md:p-10 lg:p-12 hover:bg-deep-soft transition-colors duration-700">
+          <div class="flex items-start gap-6">
+            <span class="font-display text-5xl md:text-6xl text-ember/80 leading-none tracking-[-0.04em] shrink-0">
+              {s.n}
+            </span>
+            <div class="flex-1 min-w-0 pt-1">
+              <p class="eyebrow text-bone/55">{s.sub}</p>
+              <h3 class="mt-2 font-display text-2xl md:text-3xl leading-tight tracking-[-0.02em]">
+                {s.t}
+              </h3>
+            </div>
+          </div>
+
+          <p class="mt-6 font-serif text-base md:text-lg leading-relaxed text-bone/85">
+            {s.body}
+          </p>
+
+          <span class="absolute bottom-0 left-0 w-0 group-hover:w-full h-px bg-ember transition-all duration-700"></span>
+        </li>
+      ))}
+    </ol>
+
+    <!-- Frase de cierre del bloque -->
+    <div class="mt-20 reveal text-center max-w-3xl mx-auto">
+      <span class="block w-12 h-px bg-ember mx-auto mb-8" aria-hidden="true"></span>
+      <p class="font-display text-[clamp(1.6rem,3.4vw,2.6rem)] leading-[1.15] tracking-[-0.02em]">
+        Cuando alguien habla<br/>
+        <span class="italic font-serif font-normal text-ember">desde la herida cerrada,</span>
+        ayuda de verdad.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,81 @@
+---
+const posts = [
+  {
+    cat: "Testimonio",
+    title: "Por qué no empiezo nunca contando lo que consumía",
+    excerpt:
+      "La transformación es lo que engancha, no la caída. Por qué cuento mi historia desde quién era yo antes y no desde el escándalo.",
+    read: "5 min",
+  },
+  {
+    cat: "Reflexión",
+    title: "La estructura no es una jaula",
+    excerpt:
+      "Trabajo, ocio, deporte, equilibrio social. Cómo cuatro pilares aparentemente obvios sostienen una vida que estuvo en juego.",
+    read: "7 min",
+  },
+  {
+    cat: "Salud mental",
+    title: "Hablar de adicciones en el sector de la construcción",
+    excerpt:
+      "Por qué una jornada de salud mental en un entorno laboral puede valer más que cualquier campaña externa. Lo que vi en sala.",
+    read: "8 min",
+  },
+];
+---
+
+<section id="blog" class="bg-ink text-bone py-24 md:py-32 relative overflow-hidden">
+  <div class="absolute inset-0 ledger pointer-events-none opacity-50" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-[1400px] px-6 md:px-10">
+    <div class="flex items-end justify-between flex-wrap gap-6 mb-14 reveal">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="block w-8 h-px bg-ember"></span>
+          <span class="eyebrow text-ember">Reflexiones</span>
+        </div>
+        <h2 class="font-display text-[clamp(2.4rem,5.4vw,4.6rem)] leading-[0.96] tracking-[-0.03em] max-w-3xl">
+          Lo que voy<br/>
+          <span class="text-bone/45">aprendiendo en el camino.</span>
+        </h2>
+      </div>
+      <p class="font-serif text-base text-bone/60 max-w-sm">
+        Próximamente. Apuntes desde ponencias, sesiones y conversaciones.
+        Todo lo que escribo lo escribo desde lo vivido.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+      {posts.map((p) => (
+        <article class="reveal group bg-ink-soft border border-ink-line hover:border-ember/60 transition-colors duration-500 p-8 flex flex-col">
+          <div class="flex items-center justify-between mb-6">
+            <span class="text-[10px] font-semibold tracking-[0.22em] uppercase text-ember">
+              {p.cat}
+            </span>
+            <span class="text-xs text-bone/45">{p.read} de lectura</span>
+          </div>
+
+          <h3 class="font-display text-xl md:text-2xl leading-tight tracking-[-0.02em] flex-1">
+            {p.title}
+          </h3>
+
+          <p class="mt-4 font-serif text-bone/70 leading-relaxed text-[15px]">
+            {p.excerpt}
+          </p>
+
+          <span class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-bone group-hover:gap-3 transition-all">
+            Leer artículo
+            <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </span>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-12 reveal flex flex-wrap items-center gap-4 text-sm text-bone/55">
+      <span class="block w-6 h-px bg-bone/30"></span>
+      Los artículos llegarán en una segunda fase. Si quieres que te avise, déjame tu email abajo.
+    </div>
+  </div>
+</section>

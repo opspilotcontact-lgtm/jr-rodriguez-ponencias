@@ -1,0 +1,209 @@
+---
+const FORMSPREE_ENDPOINT = ""; // ej: "https://formspree.io/f/xxxxxxx"
+const FALLBACK_EMAIL = "hola@jrrodriguez.es";
+const WHATSAPP_URL = "https://wa.me/34000000000"; // sustituir por número real
+---
+
+<section id="contacto" class="bg-ink text-bone py-24 md:py-32 relative overflow-hidden">
+  <div class="absolute inset-0 ledger pointer-events-none opacity-60" aria-hidden="true"></div>
+  <div
+    class="absolute -top-40 -left-40 w-[640px] h-[640px] rounded-full pointer-events-none"
+    style="background: radial-gradient(circle, rgba(197,107,79,0.14) 0%, rgba(197,107,79,0) 60%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative mx-auto max-w-[1400px] px-6 md:px-10">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+      <div class="lg:col-span-5 reveal">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="block w-8 h-px bg-ember"></span>
+          <span class="eyebrow text-ember">Acción · contacto</span>
+        </div>
+
+        <h2 class="font-display text-[clamp(2.6rem,6.4vw,5.6rem)] leading-[0.95] tracking-[-0.03em]">
+          Hablemos.
+        </h2>
+
+        <p class="mt-8 font-serif text-lg leading-relaxed text-bone/85 max-w-md">
+          Si quieres una ponencia para tu equipo, tu centro o tu evento — o si
+          buscas acompañamiento personal — escríbeme. Respondo yo, no un equipo.
+        </p>
+
+        <div class="mt-12 space-y-6">
+          <a href={`mailto:${FALLBACK_EMAIL}`} class="group flex items-center gap-4 text-bone hover:text-ember transition-colors">
+            <span class="w-12 h-12 border border-bone/20 flex items-center justify-center group-hover:border-ember group-hover:bg-ember group-hover:text-bone transition-all">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="3" y="5" width="18" height="14" rx="1"/>
+                <path d="M3 7l9 6 9-6"/>
+              </svg>
+            </span>
+            <span>
+              <span class="block text-xs uppercase tracking-[0.2em] text-bone/55">Email directo</span>
+              <span class="font-semibold">{FALLBACK_EMAIL}</span>
+            </span>
+          </a>
+
+          <a href={WHATSAPP_URL} class="group flex items-center gap-4 text-bone hover:text-ember transition-colors">
+            <span class="w-12 h-12 border border-bone/20 flex items-center justify-center group-hover:border-ember group-hover:bg-ember group-hover:text-bone transition-all">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1s-1.2-.4-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.7-1.6c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2 0 1.3 1 2.6 1.1 2.7.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.5.6.2 1.2.2 1.7.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.4z"/>
+                <path d="M20.5 3.5C18.3 1.2 15.3 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.3zM12 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.5-1.5-5.4 0-5.5 4.5-10 10-10 2.7 0 5.2 1 7 2.9 1.9 1.9 2.9 4.4 2.9 7 .1 5.6-4.4 10.1-10 10.1z"/>
+              </svg>
+            </span>
+            <span>
+              <span class="block text-xs uppercase tracking-[0.2em] text-bone/55">WhatsApp</span>
+              <span class="font-semibold">Escríbeme directamente</span>
+            </span>
+          </a>
+        </div>
+
+        <p class="mt-12 text-xs text-bone/50 max-w-sm leading-relaxed">
+          Si lo que buscas es ayuda urgente, llama al 024 (línea de atención
+          a la conducta suicida en España) o al 112. Yo te leo y te respondo,
+          pero hay momentos que requieren otro tipo de ayuda inmediata.
+        </p>
+      </div>
+
+      <div class="lg:col-span-7 reveal">
+        <form
+          id="contact-form"
+          class="bg-ink-soft border border-ink-line p-7 md:p-10"
+          method="POST"
+          action={FORMSPREE_ENDPOINT || `mailto:${FALLBACK_EMAIL}`}
+          data-endpoint={FORMSPREE_ENDPOINT}
+          enctype="text/plain"
+        >
+          <p class="eyebrow text-bone/55 mb-2">Formulario seguro</p>
+          <p class="text-bone/80 text-sm mb-8">
+            Te respondo en menos de 48h laborables.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <label class="block">
+              <span class="block text-xs uppercase tracking-[0.18em] text-bone/55 mb-2">Nombre *</span>
+              <input
+                type="text"
+                name="nombre"
+                required
+                autocomplete="name"
+                class="w-full bg-transparent border-b border-bone/30 focus:border-ember py-2 text-bone placeholder:text-bone/30 outline-none transition-colors"
+                placeholder="Tu nombre"
+              />
+            </label>
+            <label class="block">
+              <span class="block text-xs uppercase tracking-[0.18em] text-bone/55 mb-2">Email *</span>
+              <input
+                type="email"
+                name="email"
+                required
+                autocomplete="email"
+                class="w-full bg-transparent border-b border-bone/30 focus:border-ember py-2 text-bone placeholder:text-bone/30 outline-none transition-colors"
+                placeholder="tu@email.com"
+              />
+            </label>
+          </div>
+
+          <fieldset class="mt-8">
+            <legend class="block text-xs uppercase tracking-[0.18em] text-bone/55 mb-3">Motivo *</legend>
+            <div class="flex flex-wrap gap-2">
+              {[
+                { v: "ponencia", l: "Solicitar ponencia" },
+                { v: "acompanamiento", l: "Acompañamiento personal" },
+                { v: "prensa", l: "Prensa / colaboración" },
+                { v: "otro", l: "Otro" },
+              ].map((opt, i) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="motivo" value={opt.v} class="sr-only peer" required={i === 0} checked={i === 0} />
+                  <span class="inline-flex px-4 py-2 text-sm border border-bone/25 peer-checked:bg-ember peer-checked:text-bone peer-checked:border-ember peer-focus-visible:ring-2 peer-focus-visible:ring-ember transition-colors">
+                    {opt.l}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <label class="block mt-8">
+            <span class="block text-xs uppercase tracking-[0.18em] text-bone/55 mb-2">Mensaje *</span>
+            <textarea
+              name="mensaje"
+              rows="5"
+              required
+              class="w-full bg-transparent border border-bone/25 focus:border-ember p-3 text-bone placeholder:text-bone/30 outline-none transition-colors resize-y"
+              placeholder="Cuéntame brevemente: tipo de evento, fecha aproximada, número de asistentes, o el motivo personal por el que escribes."
+            ></textarea>
+          </label>
+
+          <label class="mt-6 flex items-start gap-3 text-sm text-bone/70 cursor-pointer">
+            <input type="checkbox" name="privacidad" required class="mt-1 accent-ember" />
+            <span>
+              He leído y acepto la
+              <a href="#privacidad" class="underline hover:text-ember">política de privacidad</a>.
+              No comparto tus datos con nadie. *
+            </span>
+          </label>
+
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <button type="submit" class="btn btn-ember">
+              Enviar mensaje
+              <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </button>
+            <p class="text-xs text-bone/55">* campos obligatorios</p>
+          </div>
+
+          <p id="form-status" role="status" aria-live="polite" class="mt-6 text-sm hidden"></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Frase de cierre -->
+    <div class="mt-24 md:mt-32 reveal text-center">
+      <span class="block w-12 h-px bg-ember mx-auto mb-8" aria-hidden="true"></span>
+      <p class="font-display text-[clamp(1.6rem,4vw,3rem)] leading-[1.1] tracking-[-0.02em] max-w-3xl mx-auto">
+        Hablar desde la verdad,<br/>
+        <span class="italic font-serif font-normal text-ember">ayudar desde la herida cerrada.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const status = document.getElementById("form-status") as HTMLParagraphElement | null;
+
+  form?.addEventListener("submit", async (e) => {
+    if (!form || !status) return;
+    const endpoint = form.dataset.endpoint;
+    if (!endpoint) return; // Fallback nativo a mailto
+
+    e.preventDefault();
+    status.classList.remove("hidden");
+    status.textContent = "Enviando...";
+    status.style.color = "rgba(242,237,228,0.7)";
+
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        form.reset();
+        status.textContent = "Recibido. Te respondo en menos de 48h. Gracias por escribir.";
+        status.style.color = "#C56B4F";
+      } else {
+        const json = await res.json().catch(() => ({}));
+        status.textContent = json?.errors?.[0]?.message ?? "No se ha podido enviar. Prueba por email.";
+        status.style.color = "#ff8c8c";
+      }
+    } catch {
+      status.textContent = "No se ha podido enviar. Prueba por email.";
+      status.style.color = "#ff8c8c";
+    }
+  });
+</script>

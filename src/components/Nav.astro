@@ -1,0 +1,129 @@
+---
+const links = [
+  { href: "#historia", label: "Mi historia" },
+  { href: "#relato", label: "El relato" },
+  { href: "#ponencias", label: "Ponencias" },
+  { href: "#acompanamiento", label: "Acompañamiento" },
+  { href: "#pilares", label: "Pilares" },
+];
+---
+
+<header
+  id="site-nav"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out"
+  data-state="top"
+>
+  <div class="mx-auto max-w-[1400px] px-6 md:px-10 py-4 md:py-5 flex items-center justify-between">
+    <a href="#top" class="group flex items-center gap-2.5" aria-label="JR Rodríguez — Inicio">
+      <span class="relative inline-flex items-center justify-center w-9 h-9 bg-ink text-ember font-display text-[15px] tracking-tight rounded-sm transition-transform duration-500 group-hover:rotate-[-4deg]">
+        JR
+        <span class="absolute -bottom-[3px] left-1 right-1 h-[2px] bg-ember"></span>
+      </span>
+      <span class="font-semibold text-[15px] tracking-tight text-ink nav-brand">
+        JR Rodríguez
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Navegación principal">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="nav-link relative px-4 py-2 text-sm font-medium text-ink/80 hover:text-ink transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="#contacto" class="btn btn-ember text-sm py-2.5 px-5 hidden sm:inline-flex">
+        Solicitar ponencia
+        <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+      <button
+        type="button"
+        id="mobile-toggle"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label="Abrir menú"
+        class="lg:hidden inline-flex w-10 h-10 items-center justify-center text-ink"
+      >
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="lg:hidden hidden bg-ink text-bone border-t border-ink-line"
+  >
+    <nav class="px-6 py-6 flex flex-col gap-1" aria-label="Navegación móvil">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="py-3 text-base font-medium border-b border-ink-line/60 last:border-0"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a href="#contacto" class="btn btn-ember mt-4 justify-center">Solicitar ponencia</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  #site-nav[data-state="top"] {
+    background: transparent;
+  }
+  #site-nav[data-state="scrolled"] {
+    background: color-mix(in srgb, var(--color-bone) 92%, transparent);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    box-shadow: 0 1px 0 rgba(22, 22, 22, 0.06);
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 6px;
+    height: 1px;
+    background: var(--color-ink);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 380ms var(--ease-out-expo);
+  }
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+</style>
+
+<script>
+  const nav = document.getElementById("site-nav");
+  const setState = () => {
+    if (!nav) return;
+    nav.dataset.state = window.scrollY > 24 ? "scrolled" : "top";
+  };
+  setState();
+  window.addEventListener("scroll", setState, { passive: true });
+
+  const toggle = document.getElementById("mobile-toggle");
+  const menu = document.getElementById("mobile-menu");
+  toggle?.addEventListener("click", () => {
+    if (!menu) return;
+    const open = menu.classList.toggle("hidden") === false;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  });
+  menu?.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => {
+      menu.classList.add("hidden");
+      toggle?.setAttribute("aria-expanded", "false");
+    })
+  );
+</script>

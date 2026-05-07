@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+@theme {
+  /* Acento cálido — brasa / terracota.
+     Lo que aún arde después del incendio. Herida cerrada. Tierra. */
+  --color-ember: #c56b4f;
+  --color-ember-soft: #d88b71;
+  --color-ember-deep: #9c4c36;
+
+  /* Tinta — fondo profundo, escritural, no industrial */
+  --color-ink: #161616;
+  --color-ink-soft: #1f1f1f;
+  --color-ink-line: #2a2a2a;
+
+  /* Azul noche — calma, profundidad, la noche que pasa */
+  --color-deep: #14253f;
+  --color-deep-soft: #1f3458;
+
+  /* Hueso / papel — luz cálida, diario, mañana */
+  --color-bone: #f2ede4;
+  --color-bone-warm: #e8e0d2;
+  --color-bone-deep: #ddd2bf;
+
+  /* Piedra */
+  --color-stone: #6b7280;
+
+  /* Tipografía */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Archivo Black", "Inter", ui-sans-serif, sans-serif;
+  --font-serif: "Source Serif 4", "Source Serif Pro", Georgia, serif;
+
+  /* Easing motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    background: var(--color-bone);
+    color: var(--color-ink);
+  }
+
+  ::selection {
+    background: var(--color-ember);
+    color: var(--color-bone);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ember);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Línea de horizonte: hilo conductor */
+  .horizon::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.18;
+  }
+
+  /* Cuadrícula sutil — diario / página rayada */
+  .ledger {
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      rgba(245, 242, 236, 0.05) 31px,
+      rgba(245, 242, 236, 0.05) 32px
+    );
+    background-size: 100% 32px;
+  }
+
+  /* Papel: textura cálida para el lado luz */
+  .paper {
+    background-image:
+      radial-gradient(circle at 18% 22%, rgba(197, 107, 79, 0.04) 0%, transparent 55%),
+      radial-gradient(circle at 82% 78%, rgba(20, 37, 63, 0.04) 0%, transparent 55%);
+  }
+
+  /* Botones */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.95rem 1.6rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    border-radius: 2px;
+    transition: transform 240ms var(--ease-out-expo), background-color 240ms ease, color 240ms ease, border-color 240ms ease;
+    will-change: transform;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-ember {
+    background: var(--color-ember);
+    color: var(--color-bone);
+    border: 1px solid var(--color-ember);
+  }
+  .btn-ember:hover {
+    background: var(--color-ember-deep);
+    border-color: var(--color-ember-deep);
+    color: var(--color-bone);
+  }
+
+  .btn-bone {
+    background: transparent;
+    color: var(--color-bone);
+    border: 1px solid rgba(242, 237, 228, 0.4);
+  }
+  .btn-bone:hover {
+    background: var(--color-bone);
+    color: var(--color-ink);
+    border-color: var(--color-bone);
+  }
+
+  .btn-ghost-dark {
+    background: transparent;
+    color: var(--color-ink);
+    border: 1px solid rgba(22, 22, 22, 0.25);
+  }
+  .btn-ghost-dark:hover {
+    background: var(--color-ink);
+    color: var(--color-bone);
+    border-color: var(--color-ink);
+  }
+
+  /* Etiqueta tipográfica pequeña */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 900ms var(--ease-out-expo), transform 900ms var(--ease-out-expo);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

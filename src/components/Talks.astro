@@ -1,0 +1,87 @@
+---
+// AIDA · DESEO — Ponencias. Servicio principal B2B.
+const audiences = [
+  { t: "Empresas y equipos", d: "Salud mental, adicciones y rendimiento. Para abrir la conversación que llevamos años evitando en oficinas y obras." },
+  { t: "Centros educativos y FP", d: "Hablar de oficio y de vida con quien aún está a tiempo. Adolescentes, jóvenes en formación, futuros profesionales." },
+  { t: "Eventos del sector", d: "Una voz desde dentro, no desde un escenario corporativo. Construcción, emprendimiento, asociaciones empresariales." },
+  { t: "Asociaciones y entidades", d: "Programas de prevención, reinserción y acompañamiento. Testimonio para quien necesita un espejo, no una clase." },
+];
+---
+
+<section id="ponencias" class="relative bg-ink text-bone py-24 md:py-32 overflow-hidden">
+  <div class="absolute inset-0 ledger pointer-events-none opacity-50" aria-hidden="true"></div>
+
+  <div
+    class="absolute -bottom-40 -right-32 w-[640px] h-[640px] rounded-full pointer-events-none"
+    style="background: radial-gradient(circle, rgba(197,107,79,0.14) 0%, rgba(197,107,79,0) 60%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative mx-auto max-w-[1400px] px-6 md:px-10 grid lg:grid-cols-12 gap-12">
+    <div class="lg:col-span-5 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="block w-8 h-px bg-ember"></span>
+        <span class="eyebrow text-ember">Ponencias y testimonio</span>
+      </div>
+      <h2 class="font-display text-[clamp(2.6rem,6vw,5rem)] leading-[0.96] tracking-[-0.03em]">
+        Llevo mi historia<br/>
+        <span class="italic font-serif font-normal text-bone/65">a tu equipo, tu centro<br/>o tu evento.</span>
+      </h2>
+
+      <p class="mt-8 font-serif text-lg leading-relaxed text-bone/85 max-w-md">
+        No vengo a motivar a nadie ni a darle lecciones a nadie. Vengo a contar
+        lo que pasó — quién era, cómo caí, lo que vi en el infierno y cómo
+        decidí volver a empezar. Cada uno hará con eso lo que necesite.
+      </p>
+
+      <blockquote class="mt-10 border-l-2 border-ember pl-6 font-serif italic text-xl leading-relaxed text-bone/85 max-w-md">
+        Vas a tener impacto, José. Porque cuando alguien habla
+        desde la herida cerrada, ayuda de verdad.
+      </blockquote>
+
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="#contacto" class="btn btn-ember">
+          Solicitar disponibilidad
+          <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </a>
+        <a href="#contacto" class="btn btn-bone">Pedir dossier en PDF</a>
+      </div>
+    </div>
+
+    <div class="lg:col-span-7 reveal">
+      <p class="eyebrow text-bone/55 mb-6">Para qué tipo de evento</p>
+      <ul class="grid sm:grid-cols-2 gap-px bg-bone/15">
+        {audiences.map((a, i) => (
+          <li class="bg-ink p-7 md:p-8 hover:bg-ink-soft transition-colors duration-500 group">
+            <span class="font-display text-xs tracking-[0.22em] text-ember">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <h3 class="mt-3 font-display text-xl md:text-2xl leading-tight">
+              {a.t}
+            </h3>
+            <p class="mt-3 font-serif text-bone/75 leading-relaxed text-[15px]">
+              {a.d}
+            </p>
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-10 grid grid-cols-3 gap-6 text-center">
+        <div class="border-t border-bone/20 pt-4">
+          <p class="font-display text-3xl">45–90<span class="text-base text-bone/60">′</span></p>
+          <p class="text-xs uppercase tracking-[0.18em] text-bone/55 mt-2">Duración estándar</p>
+        </div>
+        <div class="border-t border-bone/20 pt-4">
+          <p class="font-display text-3xl">ES</p>
+          <p class="text-xs uppercase tracking-[0.18em] text-bone/55 mt-2">Toda España</p>
+        </div>
+        <div class="border-t border-bone/20 pt-4">
+          <p class="font-display text-3xl">Q&A</p>
+          <p class="text-xs uppercase tracking-[0.18em] text-bone/55 mt-2">Siempre incluido</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

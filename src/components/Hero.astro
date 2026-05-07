@@ -1,0 +1,119 @@
+---
+// AIDA · ATENCIÓN — Frase sello desde el alma. Sin floritura.
+---
+
+<section
+  id="top"
+  class="relative isolate overflow-hidden bg-ink text-bone min-h-[100svh] flex items-end pt-28 md:pt-32"
+>
+  <!-- Diario rayado: textura escritural -->
+  <div class="absolute inset-0 ledger pointer-events-none opacity-90" aria-hidden="true"></div>
+
+  <!-- Halo brasa abajo izquierda -->
+  <div
+    class="absolute -bottom-44 -left-44 w-[680px] h-[680px] rounded-full pointer-events-none"
+    style="background: radial-gradient(circle, rgba(197,107,79,0.22) 0%, rgba(197,107,79,0) 60%);"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Halo azul noche arriba derecha -->
+  <div
+    class="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full pointer-events-none"
+    style="background: radial-gradient(circle, rgba(20,37,63,0.65) 0%, rgba(20,37,63,0) 65%);"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Marca lateral, plano de sesión -->
+  <div class="absolute top-28 right-6 md:right-10 hidden md:flex items-center gap-3 text-bone/40 text-[11px] tracking-[0.22em] uppercase font-medium" aria-hidden="true">
+    <span class="block w-12 h-px bg-bone/30"></span>
+    <span>Capítulo · 01</span>
+  </div>
+
+  <div class="relative w-full mx-auto max-w-[1400px] px-6 md:px-10 pb-16 md:pb-24 grid lg:grid-cols-12 gap-10 items-end">
+    <div class="lg:col-span-9">
+      <div class="flex items-center gap-3 mb-8 reveal">
+        <span class="block w-10 h-px bg-ember"></span>
+        <span class="eyebrow text-ember">JR Rodríguez · Ponencias y testimonio</span>
+      </div>
+
+      <h1
+        class="font-display text-[clamp(2.6rem,7.4vw,7.4rem)] leading-[0.96] tracking-[-0.025em] reveal"
+        data-hero-h1
+      >
+        <span class="block text-bone">No vengo a contaros</span>
+        <span class="block text-bone/50">cómo caí.</span>
+        <span class="block mt-3 md:mt-5 text-ember italic-y">Vengo a contaros</span>
+        <span class="block text-ember italic-y">cómo volví a levantarme.</span>
+      </h1>
+
+      <p class="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-bone/80 font-serif reveal">
+        Un testimonio real sobre adicción, depresión y reconstrucción.
+        Para empresas, centros educativos y eventos que quieren hablar
+        de lo que pocas voces se atreven a contar — sin maquillarlo y sin moralina.
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center gap-4 reveal">
+        <a href="#ponencias" class="btn btn-ember">
+          Solicitar una ponencia
+          <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </a>
+        <a href="#historia" class="btn btn-bone">
+          Conocer mi historia
+        </a>
+      </div>
+
+      <p class="mt-6 text-sm text-bone/55">
+        Ponencias y acompañamiento personal · Toda España · Online y presencial.
+      </p>
+    </div>
+
+    <aside class="lg:col-span-3 reveal" aria-label="Apunte breve">
+      <div class="border-t border-bone/15 pt-8">
+        <p class="eyebrow text-bone/50">Sello de apertura</p>
+        <blockquote class="mt-4 font-serif italic text-bone/80 leading-relaxed text-base border-l-2 border-ember pl-5">
+          Cuando alguien habla desde la herida cerrada, ayuda de verdad.
+        </blockquote>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Línea de horizonte -->
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-ember/40" aria-hidden="true"></div>
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 rotate-45 bg-ember" aria-hidden="true"></div>
+</section>
+
+<style>
+  .italic-y {
+    font-style: italic;
+    font-weight: 400;
+    font-family: var(--font-serif);
+    letter-spacing: -0.02em;
+  }
+</style>
+
+<script>
+  const h1 = document.querySelector("[data-hero-h1]");
+  if (h1) {
+    const spans = h1.querySelectorAll("span");
+    spans.forEach((s, i) => {
+      (s as HTMLElement).style.animation = `heroIn 1100ms cubic-bezier(0.16,1,0.3,1) ${120 + i * 130}ms both`;
+    });
+  }
+</script>
+
+<style is:global>
+  @keyframes heroIn {
+    from {
+      opacity: 0;
+      transform: translateY(36px);
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      clip-path: inset(0 0 0 0);
+    }
+  }
+</style>
